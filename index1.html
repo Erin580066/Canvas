@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模拟划线功能</title>
+		<style type="text/css">
+			body{background:#000;}
+			#c1{background:#fff;}
+		</style>
+	</head>
+	<body>
+		<canvas id="c1" width="500" height="500"></canvas>
+		<script type="text/javascript">
+			var oC = document.getElementById("c1");
+			var oGC = oC.getContext('2d');
+			oC.onmousedown = function(ev){
+				var ev = ev ||window.event;
+				oGC.moveTo(ev.clientX - oC.offsetLeft,ev.clientY - oC.offsetTop);
+				document.onmousemove = function(ev){
+					var ev = ev ||window.event;
+					oGC.lineTo(ev.clientX - oC.offsetLeft,ev.clientY - oC.offsetTop);
+					oGC.stroke();
+				}
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+				}
+			}
+		</script>
+	</body>
+</html>

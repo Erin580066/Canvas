@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>让填充方块移动</title>
+		<style type="text/css">
+			body{background:#000;}
+			#c1{background:#fff;}
+		</style>
+	</head>
+	<body>
+		<canvas id="c1" width="500" height="500"></canvas>
+		<input type="button" value="开始" id="btn"/>
+		<input type="button" value="结束" id="btn1"/>
+		<script type="text/javascript">
+			var oC = document.getElementById("c1");
+			var oGC = oC.getContext('2d');
+			var btn = document.getElementById("btn");
+			var btn1 = document.getElementById("btn1");
+			var num = 0;
+			var timer = null;
+			var onoff = true;
+			oGC.fillStyle = 'red';
+			oGC.fillRect(0,0,100,100);
+			
+			btn.onclick = function(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					num++;
+					oGC.clearRect(0,0,oC.width,oC.height)
+					oGC.fillRect(num,num,100,100);
+				},30)
+			}
+			btn1.onclick = function(){
+				clearInterval(timer);
+			}
+		</script>
+	</body>
+</html>
